@@ -7,9 +7,11 @@ class Image:
 	
 	image = []
 	position = -1
+	label = -1
 	'''The construction takes a list of RGB list'''
 	def __init__(self, listOfRGBs):
 		self.position = -1
+		self.label = -1
 		for rgb in listOfRGBs:
 			self.image.append(rgb)
 	'''get the number of pixels'''
@@ -17,9 +19,10 @@ class Image:
 		return len(self.image)
 
 	''' get the RGB of a specific pixel'''
-	def getPixel(self, i):
-		return image[i]
-
+	def __getitem__(self, i):
+		return self.image[i]
+	def getLabel(self):
+		return self.label
 	def __iter__(self):
 		return self
 
@@ -29,3 +32,7 @@ class Image:
 			raise StopIteration
 		return self.image[self.position]
 	
+	'''return a imageList'''
+	@classmethod
+	def constructImageListFromCSV(pathToCSV):
+		return null	
